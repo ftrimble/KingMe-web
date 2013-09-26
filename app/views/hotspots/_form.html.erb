@@ -1,0 +1,29 @@
+<%= form_for(@hotspot) do |f| %>
+  <% if @hotspot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hotspot.errors.count, "error") %> prohibited this hotspot from being saved:</h2>
+
+      <ul>
+      <% @hotspot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br>
+    <%= f.text_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :avg_incline %><br>
+    <%= f.text_field :avg_incline %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

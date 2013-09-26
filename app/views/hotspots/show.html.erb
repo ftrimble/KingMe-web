@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @hotspot.location %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @hotspot.length %>
+</p>
+
+<p>
+  <strong>Avg incline:</strong>
+  <%= @hotspot.avg_incline %>
+</p>
+
+<%= link_to 'Edit', edit_hotspot_path(@hotspot) %> |
+<%= link_to 'Back', hotspots_path %>

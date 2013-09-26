@@ -1,4 +1,13 @@
 KingmeWeb::Application.routes.draw do
+  resources :hotspots
+
+  resources :goals
+
+  resources :rides
+
+  devise_for :users
+  resources :groups
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
