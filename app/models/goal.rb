@@ -1,4 +1,4 @@
 class Goal < ActiveRecord::Base
-  attr_protected
+  attr_restricted
   belongs_to :user
 end
