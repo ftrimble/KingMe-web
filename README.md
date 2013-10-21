@@ -8,7 +8,7 @@ data. It will integrate with a corresponding
 immersive environment for all your training needs.
 
 ## Team
-   Forest Trimble
-   Stephen Perkins
-   Stephen Silber
-   Sam Rhody
+- Forest Trimble
+- Stephen Perkins
+- Stephen Silber
+- Sam Rhody
