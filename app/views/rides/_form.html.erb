@@ -11,19 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= form_for @ride, :url => rides_path, :html => { :multipart => true } do |form| %>
+      <%= form.file_field :gpx %>
+  <% end %>
 <% end %>

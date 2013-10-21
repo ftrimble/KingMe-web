@@ -12,6 +12,10 @@ gem 'protected_attributes'
 gem 'devise'
 gem 'cancan'
 gem 'haml'
+gem 'jquery-fileupload-rails'
+gem "paperclip", "~> 3.0"
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
