@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :group_memberships
   has_many :ride_memberships
   #has_many :hot_spots, through: :ride_memberships
-  
+  attr_protected 
 end
