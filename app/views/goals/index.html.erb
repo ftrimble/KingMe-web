@@ -1,0 +1,29 @@
+<h1>Listing goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hotspot</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.hotspot_id %></td>
+        <td><%= goal.time %></td>
+        <td><%= link_to 'Show', goal %></td>
+        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goal', new_goal_path %>

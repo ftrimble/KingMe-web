@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hotspot:</strong>
+  <%= @goal.hotspot_id %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @goal.time %>
+</p>
+
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Back', goals_path %>

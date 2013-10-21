@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location: MyString
+  length: MyString
+  avg_incline: MyString
+
+two:
+  location: MyString
+  length: MyString
+  avg_incline: MyString
