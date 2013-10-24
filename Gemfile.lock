@@ -28,6 +28,8 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
     climate_control (0.0.3)
@@ -135,6 +137,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   cancan
   coffee-rails (~> 4.0.0)
   devise

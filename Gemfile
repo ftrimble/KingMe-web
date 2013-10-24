@@ -14,7 +14,7 @@ gem 'cancan'
 gem 'haml'
 gem 'jquery-fileupload-rails'
 gem "paperclip", "~> 3.0"
-
+gem "bootstrap-sass"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

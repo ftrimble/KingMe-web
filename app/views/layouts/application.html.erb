@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>KingmeWeb</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true if false%>
-  <%= csrf_meta_tags %>
-</head>
-
-<body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete  if current_user %>
-    <%= link_to 'Sign In', new_user_session_path if !current_user %>
-    <%= yield %>
-
-</body>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+  	<%= render 'layouts/header' %>
+    <div class="container">
+    
+      <% if notice %><div class="alert alert-success" style="margin-top: 20px;"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-warning" style="margin-top: 20px;"><%= alert %></div><% end %>
+	    <%= yield %>
+	    <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>
