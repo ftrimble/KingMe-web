@@ -172,13 +172,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-  bootstrap-sass
-=======
   anjlab-bootstrap-rails!
   bootstrap-sass-rails
   bootstrap_helper
->>>>>>> 9131870c7c03d0ce5fbabbf0b0ad9ac9c615ee8f
   cancan
   coffee-rails (~> 4.0.0)
   devise
