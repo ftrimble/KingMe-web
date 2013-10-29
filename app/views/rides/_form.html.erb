@@ -13,5 +13,6 @@
 
   <%= form_for @ride, :url => rides_path, :html => { :multipart => true } do |form| %>
       <%= form.file_field :gpx %>
+      <%= form.submit 'submit', class: 'btn' %>
   <% end %>
 <% end %>
