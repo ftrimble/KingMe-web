@@ -6,5 +6,6 @@ class CreateRides < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_attachment :rides, :gpx
   end
 end

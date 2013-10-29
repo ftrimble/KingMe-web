@@ -1,17 +1,13 @@
-<%= form_for(@ride) do |f| %>
-  <% if @ride.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
-
-      <ul>
-      <% @ride.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @ride, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :gpx, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :gpx %>
     </div>
-  <% end %>
-
-  <%= form_for @ride, :url => rides_path, :html => { :multipart => true } do |form| %>
-      <%= form.file_field :gpx %>
-  <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                rides_path, :class => 'btn' %>
+  </div>
 <% end %>

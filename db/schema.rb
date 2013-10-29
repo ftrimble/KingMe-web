@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021235003) do
+ActiveRecord::Schema.define(version: 20131029010533) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "goals", force: true do |t|
     t.integer  "hotspot_id"
@@ -37,9 +40,24 @@ ActiveRecord::Schema.define(version: 20131021235003) do
     t.string   "location"
     t.string   "length"
     t.string   "avg_incline"
+    t.integer  "ride_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "points", force: true do |t|
+    t.integer  "hotspot_id"
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "elevation"
+    t.string   "description"
+    t.datetime "point_created_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "points", ["hotspot_id"], name: "index_points_on_hotspot_id", using: :btree
 
   create_table "ride_memberships", force: true do |t|
     t.integer  "ride_id"
@@ -80,8 +98,8 @@ ActiveRecord::Schema.define(version: 20131021235003) do
     t.string   "last_name"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

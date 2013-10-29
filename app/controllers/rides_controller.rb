@@ -7,14 +7,13 @@ class RidesController < ApplicationController
     @rides = Ride.all
   end
 
-  # GET /rides/1
-  # GET /rides/1.json
-  def show
-  end
 
   # GET /rides/1
   # GET /rides/1.json
   def show
+    @ride = Ride.find(params[:id])
+    @points = @ride.points.paginate(page: params[:page])
+    puts "RIDE: #{@ride} #{@points}"
   end
 
   # GET /rides/new
@@ -29,8 +28,7 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
-    @ride = Ride.new(ride_params)
-
+    @ride = Ride.new(params[:ride])
     respond_to do |format|
       if @ride.save
         format.html { redirect_to @ride, notice: 'Ride was successfully created.' }

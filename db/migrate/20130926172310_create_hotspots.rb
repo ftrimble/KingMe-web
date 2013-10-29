@@ -4,6 +4,8 @@ class CreateHotspots < ActiveRecord::Migration
       t.string :location
       t.string :length
       t.string :avg_incline
+      
+      t.integer :ride_id
 
       t.timestamps
     end
