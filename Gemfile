@@ -13,16 +13,16 @@ gem 'devise'
 gem 'cancan'
 gem 'haml'
 gem 'jquery-fileupload-rails'
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
 gem 'bootstrap_helper'
 
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.0'
 gem 'paperclip', "~> 3.0"
 gem 'nokogiri'
 gem 'twitter-bootstrap-rails'
-gem 'less-rails-bootstrap'
 gem 'therubyracer'
+gem 'railroady'
+gem 'easy_roles'
 
 
 group :doc do

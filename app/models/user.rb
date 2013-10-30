@@ -3,10 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
   has_many :goals
   has_many :group_memberships
   has_many :ride_memberships
-  #has_many :hot_spots, through: :ride_memberships
+  #before_save :add_role
   attr_protected 
+
+  #easy_roles :roles
+
+  def add_role
+    add_role 'member'
+  end
 end

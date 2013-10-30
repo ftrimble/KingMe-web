@@ -1,5 +1,12 @@
 <%- model_class = Ride -%>
+
+<% if current_user %>
+
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 <%= render :partial => 'form' %>
+
+<% else %>
+<h1> Access Denied </h1>
+<% end %>
