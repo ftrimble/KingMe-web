@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= form_tag rides_path, method: 'get' do %>
+  <div class="form-horizontal">
+    <%= text_field_tag :search, params[:search], class: 'input-medium search-query' %>
+    <%= submit_tag "Search", name: nil, class: 'btn' %>
+  </div>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -29,7 +35,7 @@
         <td><%=l ride.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_ride_path(ride), :class => 'btn btn-mini' %>
+                      edit_ride_path(ride), :class => 'btn btn-info' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       ride_path(ride),
                       :method => :delete,

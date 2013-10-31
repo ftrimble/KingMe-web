@@ -4,7 +4,7 @@ class RidesController < ApplicationController
   # GET /rides
   # GET /rides.json
   def index
-    @rides = Ride.all
+    @rides = Ride.search(params[:search])
   end
 
 

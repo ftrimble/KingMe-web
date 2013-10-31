@@ -52,4 +52,18 @@ class Ride < ActiveRecord::Base
       tmp_hotspot.points << tmp_point 
     end
   end
+
+  def self.search(search)
+    if search
+      find(:all, conditions: ["LOWER(name) LIKE LOWER(?)
+                               OR LOWER(location) LIKE LOWER(?)
+                               OR LOWER(gpx_file_name) LIKE LOWER(?)", 
+                               "%#{search}%",
+                               "%#{search}%",
+                               "%#{search}%"])
+    else
+      find(:all)
+    end
+
+  end
 end
