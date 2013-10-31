@@ -6,7 +6,6 @@ class Ride < ActiveRecord::Base
   before_save :parse_file
 
   def parse_file
-    puts "PARSE_FILE: #{gpx}"
     tempfile = gpx.queued_for_write[:original]
     p gpx.inspect
     doc = Nokogiri::XML(tempfile)
