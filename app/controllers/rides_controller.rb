@@ -11,9 +11,14 @@ class RidesController < ApplicationController
   # GET /rides/1
   # GET /rides/1.json
   def show
-    @ride = Ride.find(params[:id])
     @points = @ride.points.paginate(page: params[:page])
-    puts "RIDE: #{@ride} #{@points}"
+    @ride = Ride.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { 
+        render :json => @ride.to_json(:methods => [:polyline],:only => [:name]) 
+      }
+    end
   end
 
   # GET /rides/new

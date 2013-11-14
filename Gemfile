@@ -23,6 +23,8 @@ gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'railroady'
 gem 'easy_roles'
+gem 'polylines'
+
 
 
 group :doc do
