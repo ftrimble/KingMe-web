@@ -4,12 +4,23 @@ class Ride < ActiveRecord::Base
   has_many :hotspots, dependent: :destroy
   has_many :points, through: :hotspots
   before_save :parse_file
+
+  validates_attachment :gpx, :presence => true,
+    :content_type => { :content_type => "text/xml" },
+    :size => { :in => 0..2.megabytes }
+
   def polyline
     Polylines::Encoder.encode_points(self.polyline_points)
   end
 
   def polyline_points
     self.points.map(&:latlng)
+  end
+ 
+  def track_id_to_js(id)
+    content_tag(:script, :type => "text/javascript") do
+      "var js_track_id = "+id.to_s;
+    end
   end
 
   def parse_file

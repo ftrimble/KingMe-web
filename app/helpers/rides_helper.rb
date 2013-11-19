@@ -1,6 +1,6 @@
 module RidesHelper
   def google_maps_api_key
-   "AIzaSyAWbUG52HjXESqXykChQYtMTD7y9Ta6H1E"
+   "AIzaSyCWcd0DISU-8LizjYTYcGNNNI9pXZ4gi-0"
   end
 
   def google_api_url
