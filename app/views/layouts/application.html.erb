@@ -3,6 +3,8 @@
 <head>
   <title>KingMe</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= google_maps_api %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
@@ -25,8 +27,8 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/rides">My Rides</a></li>
-      <li><a href="/rides/new">New Ride</a></li>
       <li><a href="/groups">Groups</a></li>
+      <li><a href="/goals">Goals</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -38,9 +40,8 @@
       <li class="dropdown">
       <% if current_user %><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a><% end %>
         <ul class="dropdown-menu">
-          <li><a href="#">Edit Profile</a></li>
+          <li><a href="users/edit">Edit Profile</a></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete if current_user %></li> 
-
         </ul>
       </li>
       <li><%= link_to 'Sign Up', new_user_registration_path if !current_user %></li>
@@ -54,6 +55,6 @@
     <% if alert %><p class="alert"><%= alert %></p><% end %>
     <%= yield %>
   </div>
-
 </body>
+
 </html>

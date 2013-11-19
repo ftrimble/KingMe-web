@@ -4,12 +4,13 @@ class Ride < ActiveRecord::Base
   has_many :hotspots, dependent: :destroy
   has_many :points, through: :hotspots
   before_save :parse_file
-  def polyline
-    Polylines::Encoder.encode_points(self.polyline_points)
-  end
 
   def polyline_points
     self.points.map(&:latlng)
+  end
+
+  def polyline
+    Polylines::Encoder.encode_points(self.polyline_points)
   end
 
   def parse_file

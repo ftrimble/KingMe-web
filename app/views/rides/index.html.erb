@@ -1,6 +1,11 @@
 <%- model_class = Ride -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  <div class = pull-right>
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_ride_path,
+              :class => 'btn btn-large btn-primary' %>
+  </div></h1>
 </div>
 <%= form_tag rides_path, method: 'get' do %>
   <div class="form-horizontal">
@@ -46,7 +51,21 @@
     <% end %>
   </tbody>
 </table>
+<div id="map_canvas" style="height:600px">
+  <script = "text/javascript">
+  var gm_init;
+  gm_init = function() {
+    var gm_center, gm_map_type, map_options;
+    gm_center = new google.maps.LatLng(54, 12);
+    gm_map_type = google.maps.MapTypeId.ROADMAP;
+    map_options = {
+      center: gm_center,
+      zoom: 8,
+      mapTypeId: gm_map_type
+    };
+    return new google.maps.Map(this.map_canvas, map_options);
+  };
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_ride_path,
-            :class => 'btn btn-primary' %>
+    var map;
+    map = gm_init();
+</script></div>

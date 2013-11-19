@@ -9,5 +9,4 @@ gm_init = ->
   new google.maps.Map(@map_canvas,map_options);
 
 $ ->
-  map = gm_init()
-
+  map = gm_init();
