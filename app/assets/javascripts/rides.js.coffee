@@ -33,3 +33,4 @@ calc_bounds = (track_path) ->
   b.extend(gm_path.getAt(i[0]))
   b.extend(gm_path.getAt(i[1]))
   b.extend(gm_path.getAt(i[2]))
+  map = gm_init();

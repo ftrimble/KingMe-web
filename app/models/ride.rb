@@ -23,6 +23,10 @@ class Ride < ActiveRecord::Base
     end
   end
 
+  def polyline
+    Polylines::Encoder.encode_points(self.polyline_points)
+  end
+
   def parse_file
     tempfile = gpx.queued_for_write[:original]
     p gpx.inspect
