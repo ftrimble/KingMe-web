@@ -1,20 +1,24 @@
 <% if current_user %>
 <%= form_for @ride, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="col-md-5">
+
   <div class="form-group">
     <label for="name">Name</label>
     <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="control-group">
-    <%= f.label :gpx, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :gpx %>
-    </div>
+
+  <div class="form-group">
+    <label for="gpx">GPX File:</label>
+        <%= f.file_field :gpx %>
   </div>
-  <div class="form-actions">
+
+  <br>
+  <div class="form-group">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                rides_path, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), rides_path, :class => 'btn' %>
   </div>
+
+</div>
 <% end %>
 <% else %>
   <h1> You have to create an account before you can manage a ride!</h1>

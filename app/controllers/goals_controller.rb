@@ -25,11 +25,16 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-    puts params
+    puts "params: #{params}"
+    puts "goals:  #{goal_params}"
+    ride_id = params[:goal]
+    puts "RID: #{ride_id[:ride_id]}"
+    @goal.ride = Ride.find(ride_id[:ride_id])
+    @goal.user = User.find(current_user.id)
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to ride_path(goal_params[:ride_id]), notice: 'Goal was successfully created.' }
+        format.html { redirect_to @goal.ride, notice: 'Goal was successfully created.' }
         format.json { render action: 'show', status: :created, location: @goal }
       else
         format.html { render action: 'new' }

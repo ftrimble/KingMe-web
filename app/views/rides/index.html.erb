@@ -17,10 +17,10 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:gpx_file_name) %></th>
-      <th><%= model_class.human_attribute_name(:gpx_content_type) %></th>
       <th><%= model_class.human_attribute_name(:gpx_file_size) %></th>
       <th><%= model_class.human_attribute_name(:gpx_updated_at) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= "User Email" %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -28,10 +28,10 @@
     <% @rides.each do |ride| %>
       <tr>
         <td><%= link_to ride.gpx_file_name, ride_path(ride) %></td>
-        <td><%= ride.gpx_content_type %></td>
         <td><%= ride.gpx_file_size %></td>
         <td><%= ride.gpx_updated_at %></td>
-        <td><%=l ride.created_at %></td>
+        <td><%= ride.created_at %></td>
+        <td><%= User.find(ride.user_id).email %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_ride_path(ride), :class => 'btn btn-info' %>

@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
   end
 
   def join
-    authorize! :join, @group 
   end
 
   # GET /groups/1/edit
@@ -28,7 +27,6 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    authorize! :create, @group 
     @group = Group.new(group_params)
 
     respond_to do |format|
@@ -59,7 +57,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    authorize! :destroy, @group
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url }

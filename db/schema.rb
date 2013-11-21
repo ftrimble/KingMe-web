@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120201157) do
+ActiveRecord::Schema.define(version: 20131121202646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131120201157) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "completed"
+    t.integer  "ride_id"
   end
 
   create_table "group_memberships", force: true do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20131120201157) do
     t.string   "gpx_content_type"
     t.integer  "gpx_file_size"
     t.datetime "gpx_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "roles", force: true do |t|

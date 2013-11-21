@@ -34,6 +34,9 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = Ride.new(params[:ride])
+    @ride.name = params[:name]
+    @ride.user = User.find(current_user.id)
+    puts "Saving ride with name: #{params[:name]}"
     respond_to do |format|
       if @ride.save
         format.html { redirect_to @ride, notice: 'Ride was successfully created.' }

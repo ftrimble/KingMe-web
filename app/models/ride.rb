@@ -1,8 +1,10 @@
 class Ride < ActiveRecord::Base
-  attr_accessible :gpx 
+  attr_accessible :gpx, :name
   has_attached_file :gpx
   has_many :hotspots, dependent: :destroy
   has_many :points, through: :hotspots
+  has_many :goals
+  belongs_to :user
   before_save :parse_file
 
   validates_attachment :gpx, :presence => true,
@@ -36,7 +38,6 @@ class Ride < ActiveRecord::Base
   end
 
   def parse_xml(doc)
-    puts "Parsing XML: #{doc}"
     doc.root.elements.each do |node|
       parse_rides(node)
     end
