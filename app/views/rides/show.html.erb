@@ -70,7 +70,7 @@ calc_bounds = function(track_path) {
     <dt><strong><%= model_class.human_attribute_name(:gpx_content_type) %>:</strong></dt>
     <dd><%= @ride.gpx_content_type %></dd>
     <dt><strong><%= model_class.human_attribute_name(:gpx_file_size) %>:</strong></dt>
-    <dd><%= @ride.gpx_file_size %></dd>
+    <dd><%= @ride.gpx_file_size %> Bytes</dd>
     <dt><strong><%= model_class.human_attribute_name(:gpx_updated_at) %>:</strong></dt>
     <dd><%= @ride.gpx_updated_at %></dd>
   </dl>
@@ -91,6 +91,8 @@ calc_bounds = function(track_path) {
 </div>
 <div class="col-md-4">
     <h1> User Goals </h1>
+  <div id="map_canvas" style="height: 600px;"></div>
+
   <table class="table table-striped">
     <thead>
       <tr>
