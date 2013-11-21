@@ -1,25 +1,25 @@
-<%= form_for(@goal) do |f| %>
-  <% if @goal.errors.any? %>
-    <div id="error_explanation">
+
+<% if current_user %>
+  <%= form_for(@goal) do |f| %>
+    <% if @goal.errors.any? %>
+      <div id="error_explanation">
       <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
 
-      <ul>
-      <% @goal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :hotspot_id %><br>
-    <%= f.number_field :hotspot_id %>
+            <ul>
+            <% @goal.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+  <div class="form-group">
+    <label for="time">Time</label>
+    <%= f.text_field :time, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    <div class="form-actions">
+      <%= f.submit %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% end %>
+<% else %>
+  <h1> You have to create an account before you can manage a ride!</h1>
 <% end %>

@@ -35,7 +35,6 @@ GEM
       thor (~> 0.14)
       will_paginate (>= 3.0.3)
     builder (3.1.4)
-    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.2)
@@ -53,7 +52,6 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    easy_roles (1.2.0)
     erubis (2.7.0)
     execjs (2.0.1)
     haml (4.0.3)
@@ -158,10 +156,8 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   bootstrap_helper
-  cancan
   coffee-rails (~> 4.0.0)
   devise
-  easy_roles
   haml
   jbuilder (~> 1.2)
   jquery-fileupload-rails

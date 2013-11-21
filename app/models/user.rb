@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   #easy_roles :roles
 
-  def add_role
-    add_role 'member'
-  end
+ # def add_role
+ #   add_role 'member'
+ # end
 end

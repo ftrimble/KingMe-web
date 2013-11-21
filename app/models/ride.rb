@@ -6,8 +6,9 @@ class Ride < ActiveRecord::Base
   before_save :parse_file
 
   validates_attachment :gpx, :presence => true,
-    :content_type => { :content_type => "text/xml" },
+    :content_type => { :content_type => "application/octet-stream" },
     :size => { :in => 0..2.megabytes }
+
 
   def polyline
     Polylines::Encoder.encode_points(self.polyline_points)
