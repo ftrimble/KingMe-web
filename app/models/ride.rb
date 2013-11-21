@@ -1,5 +1,6 @@
 class Ride < ActiveRecord::Base
   attr_accessible :gpx, :name
+
   has_attached_file :gpx
   has_many :hotspots, dependent: :destroy
   has_many :points, through: :hotspots
@@ -14,6 +15,11 @@ class Ride < ActiveRecord::Base
 
   def polyline
     Polylines::Encoder.encode_points(self.polyline_points)
+  end
+
+  def set_start_location(point)
+    self.location = "#{point.latitude},#{points.longitude}"
+    puts "Setting initial location to #{self.location}"
   end
 
   def polyline_points
@@ -32,7 +38,6 @@ class Ride < ActiveRecord::Base
 
   def parse_file
     tempfile = gpx.queued_for_write[:original]
-    p gpx.inspect
     doc = Nokogiri::XML(tempfile)
     parse_xml(doc)
   end
