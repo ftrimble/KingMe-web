@@ -25,10 +25,7 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-    puts "params: #{params}"
-    puts "goals:  #{goal_params}"
     ride_id = params[:goal]
-    puts "RID: #{ride_id[:ride_id]}"
     @goal.ride = Ride.find(ride_id[:ride_id])
     @goal.user = User.find(current_user.id)
 
