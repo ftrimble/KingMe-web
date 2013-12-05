@@ -1,13 +1,13 @@
 <%- model_class = Ride -%>
 <div class="page-header">
-  <h1>My Rides
+  <h1>Ride Stream
   <div class = pull-right>
     <%= link_to t('.new', :default => t("helpers.links.new")),
               new_ride_path,
               :class => 'btn btn-large btn-primary' %>
   </div></h1>
 </div>
-<%= form_tag rides_path, method: 'get' do %>
+<%= form_tag stream_path, method: 'get' do %>
   <div class="form-horizontal">
     <%= text_field_tag :search, params[:search], class: 'input-medium search-query ' %>
     <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>

@@ -4,9 +4,16 @@ class RidesController < ApplicationController
   # GET /rides
   # GET /rides.json
   def index
-    @rides = Ride.search(params[:search])
+    if current_user
+      @rides = Ride.where(user_id: current_user.id).search(params[:search])
+    else
+      redirect_to new_user_session_path, :alert => "You must be logged in to do that!"
+    end
   end
 
+  def stream
+    @rides = Ride.search(params[:search])
+  end
 
   # GET /rides/1
   # GET /rides/1.json
@@ -34,9 +41,8 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = Ride.new(params[:ride])
-    @ride.name = params[:name]
+    @ride.name = ride_params[:name]
     @ride.user = User.find(current_user.id)
-    puts "Saving ride with name: #{params[:name]}"
     respond_to do |format|
       if @ride.save
         format.html { redirect_to @ride, notice: 'Ride was successfully created.' }

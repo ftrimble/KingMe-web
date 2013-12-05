@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121202646) do
+ActiveRecord::Schema.define(version: 20131204210414) do
 
   create_table "goals", force: true do |t|
     t.integer  "hotspot_id"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20131121202646) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "roles",                  default: "--- []"
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
