@@ -21,13 +21,31 @@ class GoalsController < ApplicationController
   def edit
   end
 
+  # PUT /goals/complete_goal/1
+  def complete_goal
+    @goal = Goal.find params[:id]
+    if params[:Complete] == "false" or params[:Complete] == "on"
+      @goal.update_attribute(:completed, true)
+    else
+      @goal.update_attribute(:completed, false)
+    end
+
+    puts "Set goal to #{@goal.completed} : #{params[:complete]}"
+
+    render nothing: true
+
+  end
+
   # POST /goals
   # POST /goals.json
   def create
+    puts "CREATING GOAL: #{params} \nGOAL_PARAMS: #{goal_params}"
     @goal = Goal.new(goal_params)
     ride_id = params[:goal]
     @goal.ride = Ride.find(ride_id[:ride_id])
     @goal.user = User.find(current_user.id)
+
+    puts "Goal: #{@goal} : #{@goal.ride}"
 
     respond_to do |format|
       if @goal.save
@@ -57,9 +75,11 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
+    @goal = Goal.find params[:goal_id]
     @goal.destroy
+    @ride = Ride.find params[:ride_id]
     respond_to do |format|
-      format.html { redirect_to goals_url }
+      format.html { redirect_to @ride }
       format.json { head :no_content }
     end
   end
@@ -67,7 +87,8 @@ class GoalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_goal
-      @goal = Goal.find(params[:id])
+      puts "SET_GOAL: #{params}"
+      @goal = Goal.find(params[:goal_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

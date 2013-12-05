@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :goals
   has_many :group_memberships
   has_many :ride_memberships
+
   #before_save :add_role
-  attr_accessor :username
   attr_protected 
 
 end

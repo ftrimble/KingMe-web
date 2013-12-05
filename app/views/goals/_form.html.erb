@@ -13,15 +13,18 @@
           </div>
         <% end %>
   <div class="form-group">
+<div style="width: 400px;">
 
     <%= f.hidden_field(:ride_id, value: params[:ride_id]) %>
     <label for="time">Time</label>
     <%= f.text_field :time, class: "form-control" %>
   </div>
+  </div>
     <div class="form-actions">
       <%= f.submit %>
-  </div>
+</div>
 <% end %>
+
 <% else %>
   <h1> You have to create an account before you can manage a ride!</h1>
 <% end %>

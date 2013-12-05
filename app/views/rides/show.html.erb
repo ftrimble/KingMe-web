@@ -42,7 +42,7 @@ display_on_map = function(data, map) {
   decoded_path = google.maps.geometry.encoding.decodePath(data.polyline);
   path_options = {
 path: decoded_path,
-      strokeColor: "#ff40bf",
+      strokeColor: "#ff0000",
       strokeOpacity: 0.5,
       strokeWeight: 5
   };
@@ -82,8 +82,8 @@ calc_bounds = function(track_path) {
   </dl>
 
   <!-- Dislpay Action Buttons -->
-<% if @ride.user == current_user %>
-  <div class="form-actions">
+  <% if @ride.user == current_user %>
+    <div class="form-actions">
     <%= link_to t('.back', :default => t("helpers.links.back")),
       rides_path, :class => 'btn btn-info'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -94,14 +94,15 @@ calc_bounds = function(track_path) {
       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
       :class => 'btn btn-danger' %>
     <br><br>
-</div>
-<% end %>
-      <!-- Map Canvas -->
-      <div id="map_canvas" style="height: 600px;"/>
+    </div>
+  <% end %>
+    <!-- Map Canvas -->
+    <div id="map_canvas" style="height: 600px;"/>
     </div>
   </div>
+  <% if current_user and @ride.user == current_user %>
 
-  <!-- Dislpay Goals on separate Column-->
+    <!-- Dislpay Goals on separate Column-->
   <div class="col-md-4">
     <h1> User Goals </h1>
     <table class="table table-striped">
@@ -109,13 +110,16 @@ calc_bounds = function(track_path) {
         <tr>
           <th>Time</th>
           <th>Completed?</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-      <% @ride.goals.where(user_id: 1).each do |goal| %>
+      <% @ride.goals.where(user_id: current_user.id).each do |goal| %>
         <tr>
         <td><%= goal.time %></td>
-        <td><%= (goal.completed) ? "Yes" : "No" %></td>
+        <td align=left><%= check_box_tag 'Complete', goal.completed, goal.completed, :data => {:remote => true, :url => url_for( :action => 'complete_goal', :controller => :goals, :id => goal.id), :method => :put}, :class => 'ride-toggle' %></td>
+        <td><%= link_to t('.x', :default => t("x")),
+          goal_path(goal_id: goal.id, ride_id: @ride.id), method: :delete, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
       </tbody>
@@ -123,5 +127,6 @@ calc_bounds = function(track_path) {
     <%= link_to t('.create', :default => t("Create Goal")),
       new_goal_path(ride_id: @ride.id), :class => 'btn btn-success'  %>
 
-    </div>
+  </div>
+  <% end %>
   </div>

@@ -4,9 +4,16 @@ class RidesController < ApplicationController
   # GET /rides
   # GET /rides.json
   def index
-    @rides = Ride.search(params[:search])
+    if current_user
+      @rides = Ride.where(user_id: current_user.id).search(params[:search])
+    else
+      redirect_to new_user_session_path, :alert => "You must be logged in to do that!"
+    end
   end
 
+  def stream
+    @rides = Ride.search(params[:search])
+  end
 
   # GET /rides/1
   # GET /rides/1.json
